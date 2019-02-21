@@ -24,7 +24,7 @@ if [ -z "$1" ]
     
     # checks for MS08-067
     echo "[*] Checking exlusively for ms08-067"
-    nmap --script smb-vuln-ms08-067.nse -p445
+    nmap --script smb-vuln-ms08-067.nse -p445 $1
     
     # checks for MS17-010
     echo "[*] Checking exlusively for MS17-010"
