@@ -7,7 +7,7 @@ if [ -z "$1" ]
   else
     # checks for null sessions
     echo "[*] Checking for null sessions... "
-    smbmap -H 10.10.10.4
+    smbmap -H $1
 
     # checks for shares via SMB
     echo "[*] Looking up share names..."
