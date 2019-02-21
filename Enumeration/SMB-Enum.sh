@@ -7,7 +7,7 @@ if [ -z "$1" ]
   else
   
     # check OS
-    echo "[*] Checking OS version "
+    echo "[*] Enumerating OS version "
     nmap --script smb-os-discovery.nse --script-args=unsafe=1 -p445 $1
     
     # checks for null sessions
