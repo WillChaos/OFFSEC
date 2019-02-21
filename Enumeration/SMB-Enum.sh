@@ -5,10 +5,15 @@ if [ -z "$1" ]
   then
     echo "Please select IP"
   else
+  
+    # check OS
+    echo "[*] Checking OS version "
+    nmap --script smb-os-discovery.nse --script-args=unsafe=1 -p445 $1
+    
     # checks for null sessions
     echo "[*] Checking for null sessions... "
     smbmap -H $1
-
+    
     # checks for shares via SMB
     echo "[*] Looking up share names..."
     nmap --script smb-enum-shares.nse --script-args=unsafe=1 -p445 $1
