@@ -6,7 +6,8 @@ if [ -z "$1" ]
     echo "Please select IP"
   else
     # checks for null sessions
-    echo "[*] Checking for null sessions... TODO(for now its in enum4Linux)"
+    echo "[*] Checking for null sessions... "
+    smbmap -H 10.10.10.4
 
     # checks for shares via SMB
     echo "[*] Looking up share names..."
