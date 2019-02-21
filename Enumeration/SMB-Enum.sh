@@ -28,7 +28,7 @@ if [ -z "$1" ]
     echo "[*] Running enum4Linux to see what else we can find"
     enum4linux -v -a $1
     
-    echo "[*] and as a final step, simply setting up a brute force
+    echo "[*] and as a final step, simply setting up a brute force"
     nmap --script smb-brute.nse -p445 $1
 fi
 
