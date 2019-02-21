@@ -13,5 +13,8 @@ if [ -z "$1" ]
         mkdir $1-WebScanOutput target
         echo "[*] checking if SANS exist on SSL Certificate"
         openssl s_client -connect $1:443 | openssl x509 -noout -text | grep DNS:
+        
+        echo "[*] enumerating Virtual hosts"
+        nmap -p 80,443 --script hostmap-bfk.nse $1 
 
  fi
