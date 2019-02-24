@@ -34,7 +34,7 @@ if [ -z "$1" ]
     echo " "
     echo "===================================================================== "
     echo "[*] Running FTP Enum, checking bounce and quering ftp-syst"
-    nmap --script tftp-enum.nse, ftp-bounce.nse, ftp-syst.nse --script-args=unsafe=1 -p21 $1
+    nmap --script tftp-enum.nse,ftp-bounce.nse,ftp-syst.nse --script-args=unsafe=1 -p21 $1
 
   
 fi
