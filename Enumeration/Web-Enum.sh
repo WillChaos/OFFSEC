@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 
-if [ $# < 2 ] 
+if [ $# -ne 2] 
     then
         echo "Please select scan host: Web-enum.sh <targetIP>  <port>"
         echo "Example: ./Web-enum.sh 10.10.10.105 443"
