@@ -33,8 +33,15 @@ if [ -z "$1" ]
     echo " "
     echo " "
     echo "===================================================================== "
-    echo "[*] Running FTP Enum, checking bounce and quering ftp-syst"
+    echo "[*] Running TFTP Enum, checking FTPvbounce and quering ftp-syst"
     nmap --script tftp-enum.nse,ftp-bounce.nse,ftp-syst.nse --script-args=unsafe=1 -p21 $1
 
+  # run brute
+    echo " "
+    echo " "
+    echo "===================================================================== "
+    echo "[!] Perfroming generic FTP brute - please wait"
+    echo "===================================================================== "
+    nmap --script ftp-brute --script-args=unsafe=1 -p21 $1
   
 fi
