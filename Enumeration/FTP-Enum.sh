@@ -18,7 +18,7 @@ if [ -z "$1" ]
     echo " "
     echo "===================================================================== "
     echo "[*] Checking for exploits and backdoors"
-    for NSEScript in $(ls /usr/share/nmap/scripts/ | grep -e ftp-vuln -e -vtpd-backdoor)
+    for NSEScript in $(ls /usr/share/nmap/scripts/ | grep -e ftp-vuln -e tpd-backdoor)
 	      do
 		        echo "-[*] running $NSEScript"
 		        nmap --script $NSEScript -script-args=unsafe=1 -p21 $1
