@@ -18,13 +18,13 @@ if [ -z "$1" ]
     echo " "
     echo "===================================================================== "
     echo "[*] Checking for exploits and backdoors"
-    for NSEScript in $(ls /usr/share/nmap/scripts/ | grep -e ftp-vuln -e ftpftp-anon.nse)
+    for NSEScript in $(ls /usr/share/nmap/scripts/ | grep -e ftp-vuln -e backdoor)
 	      do
 		        echo "-[*] running $NSEScript"
-		        nmap --script $NSEScript -script-args=unsafe=1 -21 $1
+		        nmap --script $NSEScript -script-args=unsafe=1 -p21 $1
 	      done
             echo "-[*] checking ftp-libopie.nse"
-            nmap --script ftp-libopie.nse -script-args=unsafe=1 -21 $1
+            nmap --script ftp-libopie.nse -script-args=unsafe=1 -p21 $1
             
 
    
@@ -34,7 +34,7 @@ if [ -z "$1" ]
     echo " "
     echo "===================================================================== "
     echo "[*] Running FTP Enum, checking bounce and quering ftp-syst"
-    nmap --script tftp-enum.nse, ftp-bounce, ftp-syst.nse --script-args=unsafe=1 -p21 $1
+    nmap --script tftp-enum.nse, ftp-bounce.nse, ftp-syst.nse --script-args=unsafe=1 -p21 $1
 
   
 fi
