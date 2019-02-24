@@ -44,7 +44,7 @@ if [ -z "$1" ]
     for NSEScript in $(ls /usr/share/nmap/scripts/ | grep smb-vuln)
 	      do
 		        echo "-[*] running $NSEScript"
-		        nmap --script $NSEScript-script-args=unsafe=1 -p445 $1
+		        nmap --script $NSEScript -script-args=unsafe=1 -p445 $1
 	      done
     
     
