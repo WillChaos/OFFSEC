@@ -39,7 +39,7 @@ elif command -v python3 &>/dev/null; then
     
 else
     echo "-[*] python doesnt look to be installed, attempting a last rersort bash tty method (may or may not work)"
-    echo os.system('/bin/bash')
+    #echo os.system('/bin/bash')
 fi
 echo "-[+] dont forget to use CTR+Z, then: stty raw -echo , then: fg <enter> <enter>"
 
