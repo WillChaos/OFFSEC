@@ -46,6 +46,7 @@ if [ -z "$1" ]
 
   # semi interactive shell
   echo "[*] Attempting to build semi-interactive shell "
+  echo "-[+] dont forget to use CTR+Z, then: stty raw -echo , then: fg <enter> <enter>"
   if command -v python &>/dev/null; then
       echo "-[*] Python availble, dropping semi-tty shell"
       python -c 'import pty;pty.spawn("/bin/bash");'
@@ -57,8 +58,6 @@ if [ -z "$1" ]
   else
       echo "-[*] python doesnt look to be installed, attempting a last rersort bash tty method"
   fi
-
-  echo "-[+] dont forget to use CTR+Z, then: stty raw -echo , then: fg <enter> <enter>"
 
 fi
 
