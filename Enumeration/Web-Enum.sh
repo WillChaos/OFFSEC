@@ -18,7 +18,7 @@ if [ $# -ne 2]
         echo "[*] Running Nikto scan"
         nikto -host $1 -port $2
 
-        echo "TODO: add CMS dection"
+        echo "TODO: add CMS dection (and everything else really.. lehl)"
 
 
 
