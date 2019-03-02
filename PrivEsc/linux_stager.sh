@@ -33,7 +33,7 @@ if command -v python &>/dev/null; then
     echo "-[*] Python availble, dropping semi-tty shell"
     python -c 'import pty;pty.spawn("/bin/bash");'
     
-if command -v python3 &>/dev/null; then
+elif command -v python3 &>/dev/null; then
     echo "-[*] Python 3 availble, dropping semi-tty shell"
     python3 -c 'import pty;pty.spawn("/bin/bash");' 
     
