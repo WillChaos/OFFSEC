@@ -57,5 +57,6 @@ fi
 
 echo "-[+] dont forget to use CTR+Z, then: stty raw -echo , then: fg <enter> <enter>"
 
+fi
 
 
