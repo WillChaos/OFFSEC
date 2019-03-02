@@ -19,7 +19,7 @@ if [ $# -ne 2]
         nikto -host $1 -port $2
 
         echo "TODO: add CMS dection (and everything else really.. lehl)"
-
+        # such ambition, not many reuslts, wow
 
 
  fi
