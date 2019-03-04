@@ -11,9 +11,9 @@ else
 # format input string
 octet="$(echo "$1" | awk -F'.' '{print $1,$2,$3}' OFS='.')"
 
-echo "[*] targetting scan octet: $octet.0"
+echo "[*] targetting network: $octet.0/24"
 
-#  echo some magic
+#  some magic shit 
 for i in `seq 254`; 
   do 
  ping -c1 -w1 $octet.$i &> /dev/null && arp -n | awk ' /'$octet'.'$i' / { print "-[!]" $1 " " $3 } '
