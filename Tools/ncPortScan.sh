@@ -8,7 +8,7 @@ if [ -z "$1" ]
     echo "example: ./ncPortScan.sh 192.168.10.105"
   else
 
-# scans 4444 ports.
+# scans well known ports.
 echo "[*] Scanning 20-30 common ports"
 nc -v -z -n -w 1 $1 21 
 nc -v -z -n -w 1 $1 22
