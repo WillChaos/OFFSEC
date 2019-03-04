@@ -62,8 +62,8 @@ if [ -z "$1" ]
 
   fi
   echo "-[*] detecting which ports ssh is availble on"
+  service sshd restart
   netstat -tpln | egrep '(Proto|ssh)'
-
 
 
 
