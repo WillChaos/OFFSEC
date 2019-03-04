@@ -1,8 +1,10 @@
 #!/bin/bash
 
-#########################################################
-#    Simple manager to set up a Meterpreter pivot
-########################################################
+################################################################
+#        Simple manager to set up a Meterpreter pivot
+#  built to quickly upgrade to a meterpreter pivot from nc shell
+#
+################################################################
 
 # set workiunug dir
 cd \tmp\
