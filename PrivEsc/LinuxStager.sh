@@ -58,15 +58,14 @@ if [ -z "$1" ]
         sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
     echo "-[*] configuring sshd_config to allow PSK auth"
         sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-        
-        
-      
+    echo "-[*] condfiguring sshd_config to accept connections on all interfaces " 
+        sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config
     echo "-[!] complete."
   else
-    echo "-[*] we are not running as root [$USER]"
+    echo "-[*] we are not running as root [$USER] - limited options here."
     echo "-[*] resetting password : $USER : qwerty"
         echo "$USER:passwd" | chpasswd
-    echo "-[!] complete. please be aware that if this user has been denioed SSH access, we wont be able to connect"
+    echo "-[!] complete. please be aware that if this user has been denied SSH access, we wont be able to connect"
 
   fi
   echo "-[*] detecting which ports ssh is availble on"
