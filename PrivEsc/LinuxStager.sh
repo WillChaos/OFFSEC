@@ -56,7 +56,11 @@ if [ -z "$1" ]
         sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
         # newer releases 
         sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-    
+    echo "-[*] configuring sshd_config to allow PSK auth"
+        sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+        
+        
+      
     echo "-[!] complete."
   else
     echo "-[*] we are not running as root [$USER]"
