@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# purpose is to perfrom port scans from boxes that we have limited tools on (only NC)
+
 if [ -z "$1" ]
   then
     echo "usage: ncPortScan.sh <target>"
