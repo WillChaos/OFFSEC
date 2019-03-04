@@ -60,6 +60,7 @@ echo "         once meterpreter is connected use the following
      |
      | set up pivot:     run autoroute -s 10.1.13.0/24 (change subnet)
      | remot scan  :     use auxiliary/scanner/portscan/tcp (see options)
+     | or remote scan:   MSFMap x.x.x.y-z 
      "
 echo "==================================================================="
 msfconsole
