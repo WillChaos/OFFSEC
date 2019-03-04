@@ -39,11 +39,11 @@ if [ -z "$1" ]
   
   # download pingSweeper.sh
   echo "[*] Downloading pingSweep.sh to: /tmp/ + making executable"
-  wget $1/Tools/pingSweep.sh -O /tmp/pingSweep.sh
+  wget $1/Tools/pingSweep.sh -O /tmp/pingSweep.sh && chmod +x /tmp/pingSweep.sh
   
   # download ncPortScanner.sh
   echo "[*] Downloading ncPortScanner.sh to: /tmp/ + making executable"
-  wget $1/Tools/ncPortScan.sh -O /tmp/ncPortScan.sh
+  wget $1/Tools/ncPortScan.sh -O /tmp/ncPortScan.sh && chmod +x /tmp/ncPortScan.sh 
   
   echo "--------------------------------------Config staging section ---------------------------------"
 
