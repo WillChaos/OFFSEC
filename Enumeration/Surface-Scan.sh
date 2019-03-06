@@ -6,13 +6,13 @@ if [ -z "$1" ]
   then
     echo "Please select scan host: Surface-Scan.sh somedomain.to.hax (note: all output is saved to textfile also)"
   else
-    echo "[*] Beggining Surface scan!"
+    echo "[*] Beggining Surface scan! - all tcp ports will be checked"
     echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     mkdir $1_ScanOutput
     nmap -p- -sV -sS -T4 -oA $1_ScanOutput/$1.txt $1
     
     echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-    echo "[*] Running a FULL UDP scan also - check back soon"
+    echo "[*] Running a FULL UDP scan a - check back soon"
     nmap -p-  -sU -T4 -oA $1_ScanOutput/$1.udp.txt $1
 
 
