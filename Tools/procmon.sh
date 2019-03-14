@@ -16,6 +16,9 @@ IFS=$'\n'
 # get current proccesses
 baseline_proc=$(ps -eo command)
 
+# pretty
+echo "[*] Started listening for new proc's. Filter: $1"
+
 # begin identifying any new spawned procs
 while true; do
     current_proc=$(ps -eo command)
