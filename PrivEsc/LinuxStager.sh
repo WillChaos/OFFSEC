@@ -34,7 +34,7 @@ if [ -z "$1" ]
   wget $1/PrivEsc/LinEnum.sh -O /tmp/linenum.sh && chmod +x /tmp/linenum.sh
 
   # download LinxPrivChecker.py
-  echo "[*] Downloading LinuxPrivChecker.sh to: /tmp/ + making executable"
+  echo "[*] Downloading LinuxPrivChecker.sh to: /tmp/"
   wget $1/PrivEsc/linuxprivchecker.py -O /tmp/LPC.py
   
   # download pingSweeper.sh
@@ -44,6 +44,10 @@ if [ -z "$1" ]
   # download ncPortScanner.sh
   echo "[*] Downloading ncPortScanner.sh to: /tmp/ + making executable"
   wget $1/Tools/ncPortScan.sh -O /tmp/ncPortScan.sh && chmod +x /tmp/ncPortScan.sh 
+  
+  # download procmon.sh
+  echo "[*] Downloading procmon.sh to: /tmp/ + making executable"
+  wget $1/Tools/procmon.sh -O /tmp/procmon.sh && chmod +x /tmp/procmon.sh
   
   echo "--------------------------------------Config staging section ---------------------------------"
 
