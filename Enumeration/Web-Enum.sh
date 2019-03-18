@@ -28,9 +28,8 @@ if [ $# -ne 2 ]
         nmap $1 -p $2 --script=http-git.nse -Pn
         
         echo "[*] Running a spider to find auth page - backgrounded job"
-        namp $1 -p $2 --scrip=http-auth-finder.nse -Pn > $1-$2-AUTHSPIDER.txt &
+        nmap $1 -p $2 --scrip=http-auth-finder.nse -Pn > $1-$2-AUTHSPIDER.txt &
 
-     
         echo "[*] Running gobuster and outputing to > $1-$2.txt - backgrounded job"
         gobuster -e -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt > $1-$2-GOBUSTER.txt &
 
