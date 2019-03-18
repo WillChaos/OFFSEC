@@ -9,8 +9,9 @@ if [ $# -ne 2 ]
         # main
         echo "[------------- WebEnum by WillChaos--------------]"
 
-        echo "[*] checking if SANS exist on SSL Certificate (ignore output if no HTTPS)"
+        echo "[*] Running SSL Enumeration"
         openssl s_client -connect $1:$2 | openssl x509 -noout -text | grep DNS:
+        sslscan --show-certificate --verbose $1:$2
 
         echo "[*] Running gobuster and outputing to > $1-$2.txt"
         gobuster -e -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt > $1-$2.txt &
