@@ -10,7 +10,6 @@ if [ $# -ne 2 ]
         echo "[------------- WebEnum by WillChaos--------------]"
 
         echo "[*] Running SSL Enumeration"
-        openssl s_client -connect $1:$2 | openssl x509 -noout -text | grep DNS:
         sslscan --show-certificate --verbose $1:$2
 
         echo "[*] Running gobuster and outputing to > $1-$2.txt"
