@@ -7,6 +7,7 @@ if [ $# -ne 1 ]
     else
         # main
         echo "[------------- StegEnum by WillChaos--------------]"
+	echo "INFO: This script downloads file from a webserver and performs steg testing"
 
         echo "[*] ------------------Downloading Pic-----------------------"
         wget $1 -O imageFile
