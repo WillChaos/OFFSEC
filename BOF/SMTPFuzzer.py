@@ -13,7 +13,7 @@ addr_port=110
 uname='USER'
 pword='PASS'
 
-# loop through buffer++ 30 times incrementing the buffer size
+# loop through buffer++ X times incrementing the buffer size
 while len(buffer) <= 30:
 	buffer.append("A"*counter)
 	counter=counter+200
