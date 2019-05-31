@@ -46,20 +46,22 @@ if [ $# -ne 2 ]
         nmap $1 -p $2 --script=http-git.nse -Pn
         
         echo "[*] Running a spider to find auth page - backgrounded job"
-        nmap $1 -p $2 --scrip=http-auth-finder.nse -Pn > $1-$2-AUTHSPIDER.txt &
+        nmap $1 -p $2 --script=http-auth-finder.nse -Pn > $1-$2-AUTHSPIDER.txt &
 
         echo "[*] Running gobuster and outputing to > $1-$2.txt - backgrounded job"
         gobuster -e -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o $1-$2-GOBUSTER.txt &
         
         echo "[*] Checking if wordpress exists..."
-        if [ validate_url $1:$2/wp-login.php >/dev/null ] 
+        _wp = validate_url $1:$2/wp-login.php >/dev/null
+        if [ $_wp ] 
         then
             echo "[!] Found wordpress indicated by login page here: $1:$2/wp-login.php"
             echo "[!] Running backgrounded wpscan"
             wpscan --url $1:$2--enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt  --force --update --random-user-agent &
             
         else
-            if [ validate_url $1:$2/wp/wp-login.php >/dev/null ]
+            _wp2 = validate_url $1:$2/wp/wp-login.php >/dev/null
+            if [ $_wp2 ]
             then
                 echo "[!] Found wordpress indicated by login page here: $1:$2/wp/wp-login.php"
                 echo "[!] Running backgrounded wpscan"
