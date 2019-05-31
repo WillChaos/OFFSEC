@@ -42,7 +42,7 @@ if [ $# -ne 2 ]
         echo "[*] Running RFI/LFI spider - backgrounded job"
         nmap $1 -p $2 --script=http-rfi-spider.nse -Pn > $1-$2-RFISPIDER.txt &
         
-        echo "[*] Running .GIt lookup"
+        echo "[*] Running .Git lookup"
         nmap $1 -p $2 --script=http-git.nse -Pn
         
         echo "[*] Running a spider to find auth page - backgrounded job"
