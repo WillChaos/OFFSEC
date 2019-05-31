@@ -60,6 +60,7 @@ if [ $# -ne 2 ]
             
         else
             if [ validate_url $1:$2/wp/wp-login.php >/dev/null ]
+            then
                 echo "[!] Found wordpress indicated by login page here: $1:$2/wp/wp-login.php"
                 echo "[!] Running backgrounded wpscan"
                 wpscan --url $1:$2/wp --enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt --force --update --random-user-agent &
