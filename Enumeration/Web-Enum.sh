@@ -52,16 +52,16 @@ if [ $# -ne 2 ]
         gobuster -e -u $1:$2 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o $1-$2-GOBUSTER.txt &
         
         echo "[*] Checking if wordpress exists..."
-        _wp = validate_url $1:$2/wp-login.php >/dev/null
-        if [ $_wp ] 
+        WP=$(validate_url $1:$2/wp-login.php >/dev/null)
+        if [ $WP ] 
         then
             echo "[!] Found wordpress indicated by login page here: $1:$2/wp-login.php"
             echo "[!] Running backgrounded wpscan"
             wpscan --url $1:$2--enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt  --force --update --random-user-agent &
             
         else
-            _wp2 = validate_url $1:$2/wp/wp-login.php >/dev/null
-            if [ $_wp2 ]
+            WP2=$(validate_url $1:$2/wp-login.php >/dev/null)
+            if [ $WP2 ]
             then
                 echo "[!] Found wordpress indicated by login page here: $1:$2/wp/wp-login.php"
                 echo "[!] Running backgrounded wpscan"
