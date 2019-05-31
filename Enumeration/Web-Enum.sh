@@ -56,13 +56,22 @@ if [ $# -ne 2 ]
         if validate_url $1:$2/wp-login.php; then
             echo "[!] Found wordpress indicated by login page here: $1:$2/wp-login.php"
             echo "[!] Running backgrounded wpscan"
-            wpscan --url $1:$2--enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt  --force --update --random-user-agent &
-            
+            if [ $2 -eq 443 ] 
+            then
+                wpscan --url https://$1 --enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt  --force --update --random-user-agent &
+            else
+                wpscan --url http://$1:$2 --enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt  --force --update --random-user-agent &
+            fi
         else
             if validate_url $1:$2/wp/wp-login.php; then
                 echo "[!] Found wordpress indicated by login page here: $1:$2/wp/wp-login.php"
                 echo "[!] Running backgrounded wpscan"
-                wpscan --url $1:$2/wp --enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt --force --update --random-user-agent &
+                if [ $2 -eq 443 ] 
+                then
+                    wpscan --url https://$1/wp --enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt  --force --update --random-user-agent &
+                else
+                    wpscan --url http://$1:$2/wp --enumerate vp, vt, cb ,u -t 10 --output wordpress-$1:$2-wp.txt  --force --update --random-user-agent &
+                fi
             else
                 echo "[X] Wordpress not detected "
             fi
