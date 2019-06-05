@@ -8,7 +8,7 @@ if [ -z "$1" ]
     echo "[*] Beggining Surface scan! - all tcp ports will be checked"
     echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     mkdir $1_ScanOutput
-    nmap -p- -sV -sS -T4 -oA $1_ScanOutput/$1.txt $1
+    nmap -vv -p- -sV -sS -T4 -oA $1_ScanOutput/$1.txt $1
     echo "-[+] Converting output to HTML readable..."
     xsltproc $1_ScanOutput/$1.txt.xml -o $1_ScanOutput/$1.html
     echo "-[+] Opening HTML Nmap Scan..."
