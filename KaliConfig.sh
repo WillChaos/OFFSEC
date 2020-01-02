@@ -24,10 +24,9 @@ if grep -Fxq "# Added by WillChaos" ~/.bashrc
 
 
 # Handling vmware tools restarts (usually fixes vmwar eversions of copy paste failers etc)
-echo "[*] Applying vmware tools fix"
+echo "-[*] Applying vmware tools fix"
 
-vmwaretools_bashrc="
-
+vmwaretools_bashrc=$(cat <<-END
 # vmware_tools fix
 systemctl stop run-vmblock\\x2dfuse.mount
 killall -q -w vmtoolsd
@@ -39,7 +38,9 @@ vmware-user-suid-wrapper vmtoolsd -n vmusr 2>/dev/null
 vmtoolsd -b /var/run/vmroot 2>/dev/null
 
 vmware-users
-"
+END
+)
+
 
 if grep -Fxq "# vmware_tools fix" ~/.bashrc
     then
@@ -55,7 +56,7 @@ if grep -Fxq "# vmware_tools fix" ~/.bashrc
 
 # Dependancies
 echo "[*] installing dependancies and pre reqs for scripts and apps"
-sudo apt-get install git gcc python-pip python3-pip make libpcap-dev 
+sudo apt-get install git gcc python-pip python3-pip make libpcap-dev -y
 
 # GIT clone for OFFSEC scripts
 echo "[*] Staging OFFSEC working directory from GIT"
@@ -98,4 +99,8 @@ rm -rf /root/Desktop/*.*
 
 # Updates
 echo "[*] Running updates"
-sudo apt-get update && apt-get upgrade 
+sudo apt-get update && apt-get upgrade -y
+
+
+
+
