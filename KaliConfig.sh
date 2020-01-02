@@ -37,7 +37,7 @@ cat <(fgrep -i -v "$command" <(crontab -l)) <(echo "$job") | crontab -
 
 # Dependancies
 echo "[*] installing dependancies and pre reqs for scripts and apps"
-sudo apt-get install git gcc python-pip python3-pip make libpcap-dev -y
+sudo apt-get install git gcc python-pip python3-pip  make libpcap-dev -y 
 
 # GIT clone for OFFSEC scripts
 echo "[*] Staging OFFSEC working directory from GIT"
