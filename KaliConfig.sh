@@ -87,6 +87,15 @@ if [ ! -d "/opt/impacket" ]
 fi
 
 
+# set background
+echo "[*] setting background"
+wget https://images.hdqwalls.com/wallpapers/mr-robot-mask-f-society-artwork-4k-on.jpg -O /root/Pictures/bg.jpg
+gsettings set org.gnome.desktop.background picture-uri "file:///root/Pictures/bg.jpg"
+
+# remove shit from the desktop
+echo "[*] Stripping shit from the root desktop"
+rm -rf /root/Desktop/*.*
+
 # Updates
 echo "[*] Running updates"
 sudo apt-get update && apt-get upgrade 
