@@ -37,7 +37,7 @@ cat <(fgrep -i -v "$command" <(crontab -l)) <(echo "$job") | crontab -
 
 # Dependancies
 echo "[*] installing dependancies and pre reqs for scripts and apps"
-sudo apt-get install git gcc python-pip python3-pip  make libpcap-dev -y 
+sudo apt-get install git gcc python-pip python3-pip -y -qq
 
 # GIT clone for OFFSEC scripts
 echo "[*] Staging OFFSEC working directory from GIT"
@@ -78,9 +78,16 @@ gsettings set org.gnome.desktop.background picture-uri "file:///root/Pictures/bg
 echo "[*] Stripping shit from the root desktop"
 rm -rf /root/Desktop/*.*
 
-# Updates
-echo "[*] Running updates"
-sudo apt-get update && apt-get upgrade -y
+# Updates ( UPGRADING EVERYTHING BREAKS SHIT - we need to tip toe)
+echo "[*] Running updates, this may take a bit..."
+sudo apt-get update -y -qq
+apt-get install --only-upgrade nmap -qq -y
+apt-get install --only-upgrade nikto -qq -y
+apt-get install --only-upgrade wpscan -qq -y
+apt-get install --only-upgrade tcpdump -qq -y
+
+
+searchsploit -u
 
 echo " ---------------------------------------------------------------------------------------------------------------- "
 echo "                            done, change your password and reboot to finalize                                     "
