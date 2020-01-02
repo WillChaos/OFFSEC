@@ -24,7 +24,7 @@ if grep -Fxq "# Added by WillChaos" ~/.bashrc
 
 
 # Handling vmware tools restarts (usually fixes vmwar eversions of copy paste failers etc)
-echo "-[*] Applying vmware tools fix"
+echo "[*] Applying vmware tools fix"
 
 vmwaretools_bashrc="
 
