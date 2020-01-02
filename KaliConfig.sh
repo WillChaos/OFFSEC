@@ -3,7 +3,7 @@
 ############################################################################################################
 #          Super hack'n'slash script to quickly stage working enviornment on a new kali install
 #                                simply will be added to as time goes on.
-############################################################################################################
+###########################################################################################################
 
 # Term prefs
 echo "[*] Setting terminal prefs"
@@ -21,6 +21,37 @@ if grep -Fxq "# Added by WillChaos" ~/.bashrc
          echo " " >> ~/.bashrc
          echo "-[+] Completed!"   
  fi
+
+
+# Handling vmware tools restarts (usually fixes vmwar eversions of copy paste failers etc)
+echo "-[*] Applying vmware tools fix"
+
+vmwaretools_bashrc="
+
+# vmware_tools fix
+systemctl stop run-vmblock\\x2dfuse.mount
+killall -q -w vmtoolsd
+
+systemctl start run-vmblock\\x2dfuse.mount
+systemctl enable run-vmblock\\x2dfuse.mount
+
+vmware-user-suid-wrapper vmtoolsd -n vmusr 2>/dev/null
+vmtoolsd -b /var/run/vmroot 2>/dev/null
+
+vmware-users
+"
+
+if grep -Fxq "# vmware_tools fix" ~/.bashrc
+    then
+        echo "-[!] VMWareTools Fix allready applied, Skipping"
+
+    else
+         echo " " >> ~/.bashrc
+         echo $vmwaretools_bashrc >> ~/.bashrc
+         echo " " >> ~/.bashrc
+         echo "-[+] Completed!"   
+ fi
+
 
 # Dependancies
 echo "[*] installing dependancies and pre reqs for scripts and apps"
@@ -59,4 +90,3 @@ fi
 # Updates
 echo "[*] Running updates"
 sudo apt-get update && apt-get upgrade 
-
