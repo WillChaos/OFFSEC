@@ -34,7 +34,6 @@ echo 'export VISUAL="nano"' >> ~/.bash_profile
 exec_vmwtf="systemctl stop run-vmblock\\x2dfuse.mount && killall -q -w vmtoolsd && systemctl start run-vmblock\\x2dfuse.mount && systemctl enable run-vmblock\\x2dfuse.mount && vmware-user-suid-wrapper vmtoolsd -n vmusr 2>/dev/null && vmtoolsd -b /var/run/vmroot 2>/dev/null"
 job="0 0 * * 0 $exec_vmwtf"
 cat <(fgrep -i -v "$command" <(crontab -l)) <(echo "$job") | crontab -
-echo "-[+] Set vmware fix to run on each reboot"
 
 # Dependancies
 echo "[*] installing dependancies and pre reqs for scripts and apps"
